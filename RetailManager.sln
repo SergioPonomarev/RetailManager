@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMDataManager", "RMDataManager\RMDataManager.csproj", "{6A30FE5C-0785-488F-B09E-C911F852E063}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A30FE5C-0785-488F-B09E-C911F852E063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A30FE5C-0785-488F-B09E-C911F852E063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A30FE5C-0785-488F-B09E-C911F852E063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A30FE5C-0785-488F-B09E-C911F852E063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
