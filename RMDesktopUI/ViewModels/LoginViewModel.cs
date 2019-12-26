@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using RMDesktopUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,14 @@ namespace RMDesktopUI.ViewModels
 {
     public class LoginViewModel : Screen
     {
-		private string _userName;
-		private string _password;
+		private string _userName = "sergey.ponomarev@rokolabs.com";
+		private string _password = "Temp1234??";
+		private IAPIHelper _apiHelper;
+
+		public LoginViewModel(IAPIHelper apiHelper)
+		{
+			_apiHelper = apiHelper;
+		}
 
 		public string UserName
 		{
@@ -49,9 +56,16 @@ namespace RMDesktopUI.ViewModels
 			}
 		}
 
-		public void LogIn()
+		public async Task LogIn()
 		{
-			Console.WriteLine();
+			try
+			{
+				var result = await _apiHelper.Authenticate(UserName, Password);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 	}
 }
