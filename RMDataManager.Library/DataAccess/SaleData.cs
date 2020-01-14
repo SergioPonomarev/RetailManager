@@ -66,7 +66,7 @@ namespace RMDataManager.Library.DataAccess
                         sql.SaveDataInTransaction("dbo.spSaleDetail_Insert", item);
                     }
 
-                    //sql.CommitTransaction();
+                    sql.CommitTransaction();
                 }
                 catch
                 {
