@@ -174,7 +174,7 @@ namespace RMDesktopUI.ViewModels
             {
                 bool output = false;
 
-                if (SelectedCartItem != null && SelectedCartItem?.Product.QuantityInStock > 0)
+                if (SelectedCartItem != null && SelectedCartItem?.QuantityInCart > 0)
                 {
                     output = true;
                 }
@@ -200,6 +200,7 @@ namespace RMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
             NotifyOfPropertyChange(() => CanCheckOut);
+            NotifyOfPropertyChange(() => CanAddToCart);
         }
 
         public bool CanCheckOut
@@ -231,6 +232,8 @@ namespace RMDesktopUI.ViewModels
             }
 
             await _saleEndpoint.PostSale(sale);
+
+            await ResetSalesViewModel();
         }
 
         private decimal CalculateSubTotal()
@@ -254,15 +257,19 @@ namespace RMDesktopUI.ViewModels
                 .Where(x => x.Product.IsTaxable)
                 .Sum(x => x.Product.RetailPrice * x.QuantityInCart * taxRate);
 
-            //foreach (var item in Cart)
-            //{
-            //    if (item.Product.IsTaxable)
-            //    {
-            //        taxAmount += item.Product.RetailPrice * item.QuantityInCart * taxRate;
-            //    }
-            //}
-
             return taxAmount;
+        }
+
+        private async Task ResetSalesViewModel()
+        {
+            Cart = new BindingList<CartItemDisplayModel>();
+
+            await LoadProducts();
+
+            NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
     }
 }
