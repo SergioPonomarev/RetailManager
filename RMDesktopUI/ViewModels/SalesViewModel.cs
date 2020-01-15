@@ -20,14 +20,14 @@ namespace RMDesktopUI.ViewModels
         private BindingList<ProductDisplayModel> _products;
         private BindingList<CartItemDisplayModel> _cart = new BindingList<CartItemDisplayModel>();
         private int _itemQuantity = 1;
-        private IProductEndpoint _productEndpoint;
-        private IConfigHelper _configHelper;
-        private ISaleEndpoint _saleEndpoint;
-        private IMapper _mapper;
+        private readonly IProductEndpoint _productEndpoint;
+        private readonly IConfigHelper _configHelper;
+        private readonly ISaleEndpoint _saleEndpoint;
+        private readonly IMapper _mapper;
         private ProductDisplayModel _selectedProduct;
         private CartItemDisplayModel _selectedCartItem;
-        private StatusInfoViewModel _status;
-        private IWindowManager _window;
+        private readonly StatusInfoViewModel _status;
+        private readonly IWindowManager _window;
 
         public SalesViewModel(IProductEndpoint productEndpoint, IConfigHelper configHelper, ISaleEndpoint saleEndpoint, IMapper mapper, StatusInfoViewModel status, IWindowManager window)
         {
